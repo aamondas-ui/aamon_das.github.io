@@ -1,9 +1,190 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My GitHub Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Personal Website</title>
+  <style>
+    /* Reset & base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+
+      /* Decent modern gradient background */
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+      background-attachment: fixed;
+    }
+
+    /* Top Navigation Bar */
+    header {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-start; /* Aligned tabs to the top left */
+      padding: 1rem 2rem;
+    }
+
+    .nav-tabs {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    .nav-tabs a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-tabs a:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-tabs a.active {
+      color: #ffffff;
+      background: #6366f1;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Main Content Container */
+    main {
+      flex: 1;
+      max-width: 900px;
+      width: 90%;
+      margin: 3rem auto;
+      padding: 2.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Tab Sections */
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #f8fafc;
+      letter-spacing: -0.5px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello, World! My site is working!</h1>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav>
+      <ul class="nav-tabs">
+        <li><a href="#" class="tab-link active" onclick="switchTab(event, 'home')">Home</a></li>
+        <li><a href="#" class="tab-link" onclick="switchTab(event, 'education')">Education</a></li>
+        <li><a href="#" class="tab-link" onclick="switchTab(event, 'achievements')">Achievements</a></li>
+        <li><a href="#" class="tab-link" onclick="switchTab(event, 'hobbies')">Hobbies</a></li>
+        <li><a href="#" class="tab-link" onclick="switchTab(event, 'resources')">Resources</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Home Tab -->
+    <section id="home" class="tab-content active">
+      <h1>Hello, Welcome!</h1>
+      <p>
+        Welcome to my personal website! I am passionate about learning, creating, and exploring new ideas. This platform serves as a space where I share my journey, background, key achievements, and the resources that inspire me. Feel free to explore the tabs above to learn more about my education, pursuits, and hobbies!
+      </p>
+    </section>
+
+    <!-- Education Tab -->
+    <section id="education" class="tab-content">
+      <h1>Education</h1>
+      <p>Content for your education details will go here.</p>
+    </section>
+
+    <!-- Achievements Tab -->
+    <section id="achievements" class="tab-content">
+      <h1>Achievements</h1>
+      <p>Content for your key achievements and milestones will go here.</p>
+    </section>
+
+    <!-- Hobbies Tab -->
+    <section id="hobbies" class="tab-content">
+      <h1>Hobbies</h1>
+      <p>Content for your hobbies and interests will go here.</p>
+    </section>
+
+    <!-- Resources Tab -->
+    <section id="resources" class="tab-content">
+      <h1>Resources</h1>
+      <p>Content for helpful resources, links, and materials will go here.</p>
+    </section>
+  </main>
+
+  <!-- JavaScript for Tab Switching -->
+  <script>
+    function switchTab(event, tabId) {
+      event.preventDefault();
+
+      // Hide all tab content
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(content => content.classList.remove('active'));
+
+      // Remove active class from all navigation links
+      const links = document.querySelectorAll('.tab-link');
+      links.forEach(link => link.classList.remove('active'));
+
+      // Show selected tab content and highlight the link
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
 </body>
 </html>
